@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       email: {
@@ -21,6 +22,7 @@ module.exports = {
         unique: true,
         allowNull: false,
         type: Sequelize.STRING
+        
       },
       password_hash: {
         type: Sequelize.STRING

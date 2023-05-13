@@ -18,7 +18,7 @@ class Usuario extends Model {
       nome: Sequelize.STRING,
       email: Sequelize.STRING,
       cpf: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         validate:{
           len: 11,
           msg: "CPF invalido",
@@ -39,7 +39,7 @@ class Usuario extends Model {
   }
 
   static associate(models) {
-
+    //this.hasMany(models.Pedido);
   } 
 }
 

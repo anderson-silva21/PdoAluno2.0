@@ -1,39 +1,46 @@
 import { Sequelize, Model } from "sequelize";
 
 class Pedido extends Model {
-  static init (sequelize) {
-    super.init({
-      initials: {
-        type: Sequelize.VIRTUAL,
-        get() {
-          const match = this.nome.split(" ");
-
-          if(match.length > 1) {
-            return `${match[0][0]}${match[match.length - 1][0]}`;
-          } else {
-            return match[0][0];
-          }
-        }
+  static init(sequelize) {
+    super.init(
+      {
+        data: Sequelize.DATE,
+        valor: Sequelize.DECIMAL(10, 2),
+        formaPagamento: Sequelize.STRING,
+        nomeUsuario: Sequelize.STRING,
+        observacao: Sequelize.STRING,
+        cpfUsuario: {
+          type: Sequelize.STRING,
+          validate: {
+            len: 11,
+            msg: "CPF inválido",
+            allowNull: false,
+          },
+        },
+        nomeProduto: Sequelize.STRING,
       },
-      data: Sequelize.DATE,
-      valor: Sequelize.DECIMAL(10,2),
-      formaPagamento: Sequelize.STRING,
-      nome: Sequelize.STRING,
-      observacao: Sequelize.STRING,
-      
-    },
-    {
-      sequelize,
-      name: {
-        singular: 'pedido', 
-        plural: 'pedidos',
-      },
-    }); 
+      {
+        sequelize,
+        modelName: "pedido", // Renomeie `name` para `modelName`
+        tableName: "pedidos", // Renomeie `singular` e `plural` para `tableName`
+      }
+    );
   }
 
   static associate(models) {
-
-  } 
+    this.belongsTo(models.Usuario, {
+      foreignKey: "nomeUsuario",
+      as: "usuarioNome", // Renomeie para `usuarioNome`
+    });
+    this.belongsTo(models.Usuario, {
+      foreignKey: "cpfUsuario",
+      as: "usuarioCPF", // Renomeie para `usuarioCPF`
+    });
+    this.belongsTo(models.Produto, {
+      foreignKey: "nomeProduto",
+      as: "produtoNome", // Renomeie para `produtoNome`
+    });
+  }
 }
 
 export default Pedido;

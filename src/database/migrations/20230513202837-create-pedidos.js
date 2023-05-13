@@ -15,7 +15,7 @@ module.exports = {
       },
       valor: {
         allowNull: false,
-        type: Sequelize.DECIMAL(10,2)
+        type: Sequelize.FLOAT
       },
       formaPagamento: {
         allowNull: false,
@@ -28,6 +28,15 @@ module.exports = {
       observacao: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      cpf: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        
+      },
+      produto: {
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

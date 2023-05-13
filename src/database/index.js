@@ -4,8 +4,10 @@ import config from '../config/database';
 import database from "../config/database";
 
 import Usuario from "../models/usuario";
+import Pedido from "../models/pedidos";
+import Produto from "../models/produtos";
 
-const models = [Usuario];
+const models = [Usuario, Pedido, Produto];
 
 class Database{
   constructor(){
