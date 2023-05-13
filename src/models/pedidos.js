@@ -21,8 +21,8 @@ class Pedido extends Model {
       },
       {
         sequelize,
-        modelName: "pedido", // Renomeie `name` para `modelName`
-        tableName: "pedidos", // Renomeie `singular` e `plural` para `tableName`
+        modelName: "pedido", 
+        tableName: "pedidos", 
       }
     );
   }
@@ -30,15 +30,15 @@ class Pedido extends Model {
   static associate(models) {
     this.belongsTo(models.Usuario, {
       foreignKey: "nomeUsuario",
-      as: "usuarioNome", // Renomeie para `usuarioNome`
+      as: "usuarioNome", 
     });
     this.belongsTo(models.Usuario, {
       foreignKey: "cpfUsuario",
-      as: "usuarioCPF", // Renomeie para `usuarioCPF`
+      as: "usuarioCPF", 
     });
     this.belongsTo(models.Produto, {
       foreignKey: "nomeProduto",
-      as: "produtoNome", // Renomeie para `produtoNome`
+      as: "produtoNome", 
     });
   }
 }
