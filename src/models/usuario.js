@@ -19,11 +19,13 @@ class Usuario extends Model {
       email: Sequelize.STRING,
       cpf: {
         type: Sequelize.STRING,
+        /*
         validate:{
-          len: 11,
+          len: 12,
           msg: "CPF invalido",
           allowNull: false,
-       }
+       }*/
+       allowNull: false,
       },
       password: Sequelize.VIRTUAL,
       password_hash: Sequelize.STRING,
@@ -39,7 +41,8 @@ class Usuario extends Model {
   }
 
   static associate(models) {
-    //this.hasMany(models.Pedido);
+    this.Pedidos = this.belongsTo(models.Pedido);
+    
   } 
 }
 

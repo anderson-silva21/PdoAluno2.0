@@ -7,16 +7,16 @@ class Pedido extends Model {
         data: Sequelize.DATE,
         valor: Sequelize.DECIMAL(10, 2),
         formaPagamento: Sequelize.STRING,
-        nomeUsuario: Sequelize.STRING,
+        //nomeUsuario: Sequelize.STRING,
         observacao: Sequelize.STRING,
-        cpfUsuario: {
+        /*cpfUsuario: {
           type: Sequelize.STRING,
           validate: {
             len: 11,
             msg: "CPF inválido",
             allowNull: false,
           },
-        },
+        },*/
         nomeProduto: Sequelize.STRING,
       },
       {
@@ -28,6 +28,10 @@ class Pedido extends Model {
   }
 
   static associate(models) {
+    this.Produtos = this.hasMany(models.Produto);
+    this.nomeUsuario = this.hasOne(models.Usuario);
+    this.cpfUsuario = this.hasOne(models.Usuario);
+    /*
     this.belongsTo(models.Usuario, {
       foreignKey: "nomeUsuario",
       as: "usuarioNome", 
@@ -39,7 +43,7 @@ class Pedido extends Model {
     this.belongsTo(models.Produto, {
       foreignKey: "nomeProduto",
       as: "produtoNome", 
-    });
+    });*/
   }
 }
 

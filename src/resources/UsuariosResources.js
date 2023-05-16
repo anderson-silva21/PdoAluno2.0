@@ -6,7 +6,7 @@ export default {
     resource: Usuario,
     options: {
         parent: {
-            icon: "User"
+            icon: "User"    
         },
         actions: {
             resetPassword: {

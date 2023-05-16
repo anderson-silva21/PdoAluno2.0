@@ -19,7 +19,7 @@ class Produto extends Model {
   }
 
   static associate(models) {
-
+    this.Pedidos = this.belongsTo(models.Pedidos)
   } 
 }
 
