@@ -6,7 +6,6 @@ class Relatorio extends Model {
       dataInicio: Sequelize.DATE,
       dataFim: Sequelize.DATE,
       valorTotal: Sequelize.FLOAT,
-      
     },
     {
       sequelize,
@@ -18,6 +17,8 @@ class Relatorio extends Model {
   }
 
   static associate(models) {
+    //um relatorio pode ter varios pedidos, um pedido pode estar em varios relatorios
+    this.belongsToMany(models.pedido, {through: 'relatorioPedido', foreignKey: 'idPedido'});
   } 
 }
 

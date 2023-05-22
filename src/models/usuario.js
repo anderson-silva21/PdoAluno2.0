@@ -41,8 +41,7 @@ class Usuario extends Model {
   }
 
   static associate(models) {
-    this.Pedidos = this.belongsTo(models.Pedido);
-    
+    this.hasMany(models.pedido, {foreignKey: 'idPedido'});
   } 
 }
 

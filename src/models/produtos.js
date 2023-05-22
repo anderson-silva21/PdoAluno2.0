@@ -3,11 +3,9 @@ import { Sequelize, Model } from "sequelize";
 class Produto extends Model {
   static init (sequelize) {
     super.init({
-      
       nome: Sequelize.STRING,
       valor: Sequelize.FLOAT,
       categoria: Sequelize.STRING,
-      
     },
     {
       sequelize,
@@ -19,7 +17,8 @@ class Produto extends Model {
   }
 
   static associate(models) {
-    this.Pedidos = this.belongsTo(models.Pedidos)
+    //um pedido pode ter vários produtos, um produto pode estar em vários pedidos
+    this.belongsToMany(models.pedido,  { through: 'pedidoProduto', foreignKey: 'idProduto'});
   } 
 }
 

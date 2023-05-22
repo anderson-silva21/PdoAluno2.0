@@ -7,17 +7,7 @@ class Pedido extends Model {
         data: Sequelize.DATE,
         valor: Sequelize.DECIMAL(10, 2),
         formaPagamento: Sequelize.STRING,
-        //nomeUsuario: Sequelize.STRING,
         observacao: Sequelize.STRING,
-        /*cpfUsuario: {
-          type: Sequelize.STRING,
-          validate: {
-            len: 11,
-            msg: "CPF inválido",
-            allowNull: false,
-          },
-        },*/
-        nomeProduto: Sequelize.STRING,
       },
       {
         sequelize,
@@ -28,22 +18,12 @@ class Pedido extends Model {
   }
 
   static associate(models) {
-    this.Produtos = this.hasMany(models.Produto);
-    this.nomeUsuario = this.hasOne(models.Usuario);
-    this.cpfUsuario = this.hasOne(models.Usuario);
-    /*
-    this.belongsTo(models.Usuario, {
-      foreignKey: "nomeUsuario",
-      as: "usuarioNome", 
-    });
-    this.belongsTo(models.Usuario, {
-      foreignKey: "cpfUsuario",
-      as: "usuarioCPF", 
-    });
-    this.belongsTo(models.Produto, {
-      foreignKey: "nomeProduto",
-      as: "produtoNome", 
-    });*/
+    //um relatorio pode ter varios pedidos, um pedido pode estar em varios relatorios
+    this.belongsToMany(models.Relatorio, {through: 'pedidoRelatorio', foreignKey: 'idRelatorio'});
+    //um pedido pode ter vários produtos, um produto pode estar em vários pedidos
+    this.hasMany(models.Produto, { foreignKey: 'idProduto' });
+    //um pedido pode pertencer a apenas um usuário, um usuário pode ter varios pedidos
+    this.belongsTo(models.Usuario, { foreignKey: 'idUsuario' });
   }
 }
 

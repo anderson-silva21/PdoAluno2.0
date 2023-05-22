@@ -21,10 +21,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      nome: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       observacao: {
         allowNull: false,
         type: Sequelize.STRING
