@@ -6,9 +6,9 @@ import database from "../config/database";
 import Usuario from "../models/usuario";
 import Pedido from "../models/pedidos";
 import Produto from "../models/produtos";
-import Relatorio from "../models/relatorio";
 
-const models = [Usuario, Pedido, Produto, Relatorio];
+
+const models = [Usuario, Pedido, Produto];
 
 class Database{
   constructor(){

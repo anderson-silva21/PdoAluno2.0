@@ -11,6 +11,7 @@ export default {
         properties: {
             id: {
                 position: 1,
+                isVisible:false,
             },
             nome: {
                 position: 2,
@@ -31,6 +32,9 @@ export default {
             updatedAt: {
                 position: 6,
                 isVisible: {list: true, filter: true, show: true, edit: false },
+            },
+            IdProduto: {
+                isVisible:false,
             },
         }
     }   

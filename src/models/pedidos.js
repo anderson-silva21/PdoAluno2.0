@@ -18,8 +18,6 @@ class Pedido extends Model {
   }
 
   static associate(models) {
-    //um relatorio pode ter varios pedidos, um pedido pode estar em varios relatorios
-    this.belongsToMany(models.Relatorio, {through: 'pedidoRelatorio', foreignKey: 'idRelatorio'});
     //um pedido pode ter vários produtos, um produto pode estar em vários pedidos
     this.hasMany(models.Produto, { foreignKey: 'idProduto' });
     //um pedido pode pertencer a apenas um usuário, um usuário pode ter varios pedidos

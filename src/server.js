@@ -12,7 +12,6 @@ import theme from './theme';
 import UsuariosResources from './resources/UsuariosResources';
 import ProdutosResources from './resources/ProdutosResources';
 import PedidosResources from './resources/PedidosResources';
-import RelatoriosResources from './resources/RelatoriosResources';
 
 AdminJS.registerAdapter(AdminJSSequelize);
 
@@ -21,7 +20,7 @@ const app = express();
 const adminjs = new AdminJS({
     databases: [],
     rootPath: '/admin',
-    resources: [UsuariosResources, ProdutosResources, PedidosResources, RelatoriosResources],
+    resources: [UsuariosResources, ProdutosResources, PedidosResources],
     branding: {
         companyName: 'PdoAluno',
         logo: false,
